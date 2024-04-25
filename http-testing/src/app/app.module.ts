@@ -4,12 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DataViewerComponent } from './data-viewer/data-viewer.component';
+import { DataExporterComponent } from './data-export/data-export.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataViewerComponent
+    DataExporterComponent
   ],
   imports: [
     BrowserModule,

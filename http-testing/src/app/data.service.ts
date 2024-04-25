@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class UserDataService {
 
   constructor(private http: HttpClient) { }
 
-  public getData() {
-    return this.http.get('https://dummyjson.com/users/1');
-  }
-
-  public postData() {
-
+  fetchUsers(): Observable<{ firstName: string; lastName: string }[]> {
+    return this.http.get<{ users: any[] }>('https://dummyjson.com/users')
+      .pipe(
+        map(response => response.users.map(user => ({
+          firstName: user.firstName,
+          lastName: user.lastName
+        })))
+      );
   }
 }
