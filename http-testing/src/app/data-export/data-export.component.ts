@@ -4,11 +4,10 @@ import {UserDataService} from "../data.service";
 @Component({
   selector: 'app-data-exporter',
   template: `
-    <button (click)="fetchData()">Charger les données</button>
-    <ul>
-      <li *ngFor="let user of users">{{ user.firstName }} {{ user.lastName }}</li>
-    </ul>
-    <button (click)="downloadJson()">Télécharger JSON</button>
+    <div class="d-flex flex-wrap flex-md-wrap w-50 py-2">
+      <span class="p-1" *ngFor="let user of users">{{ user.firstName }} {{ user.lastName }}</span>
+    </div>
+    <button class="btn btn-primary" (click)="downloadJson()">Télécharger JSON</button>
   `
 })
 export class DataExporterComponent implements OnInit {
